@@ -5,18 +5,15 @@ import './App.css';
 
 function App() {
   const { cart } = useSelector(states => states);
-
-  console.log(cart);
   return (
     <div>
-      <h1>Redux 2</h1>
+      <div className='text-header'>
+        <h1>Order lists</h1>
+      </div>
       <FormProduct />
       <div>
         {cart.map(product => (
-          <ProductCard 
-          key={product.bar_code} 
-          product={product}
-          />
+          <ProductCard key={product.bar_code} product={product} />
         ))}
       </div>
     </div>

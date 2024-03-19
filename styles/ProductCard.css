@@ -1,0 +1,43 @@
+.card {
+  width: 350px;
+  padding: 20px;
+  margin: 10px;
+  margin-top: 10px;
+  border: 4px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(220, 230, 230);
+  box-shadow: 3px 7px 15px #9c9a9a;
+  border-radius: 10px 10px;
+  margin-left: 15%;
+}
+
+.Button-1 {
+  background-color: rgb(178, 42, 42);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.Button-2 {
+  background-color: rgb(12, 107, 45);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.info-order {
+  text-decoration: none;
+  list-style: none;
+  font-size: 20px;
+  padding: 0.5px;
+}

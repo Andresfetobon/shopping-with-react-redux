@@ -1,15 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { addProductG } from '../../store/slices/cart.slice';
-import { useDispatch } from 'react-redux';
+import { addProductG, updateProductG } from '../../store/slices/cart.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUpdateInfoG } from '../../store/slices/updateInfo.slice';
+import '../../styles/FormProduct.css';
 
 const FormProduct = () => {
   const { register, reset, handleSubmit } = useForm();
+  const { updateInfo } = useSelector(state => state);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    reset(updateInfo);
+  }, [updateInfo]);
+
   const submit = data => {
-    dispatch(addProductG(data));
+    if (updateInfo) {
+      dispatch(updateProductG(data));
+      dispatch(setUpdateInfoG(null));
+    } else {
+      dispatch(addProductG(data));
+    }
+
     reset({
       bar_code: '',
       name: '',
@@ -19,8 +32,17 @@ const FormProduct = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <h2>Product Info</h2>
+    <form className='form-info' onSubmit={handleSubmit(submit)}>
+      <h2
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        Product Information
+      </h2>
+      <br />
       <div>
         <label htmlFor='bar_code'>Bar Code</label>
         <input {...register('bar_code')} type='text' id='bar_code' />
@@ -37,7 +59,7 @@ const FormProduct = () => {
         <label htmlFor='expiration-date'>Expiration date</label>
         <input {...register('expo_date')} type='date' id='expiration-date' />
       </div>
-      <button onClick={FormProduct}>Submit</button>
+      <button onClick={FormProduct}>Request</button>
     </form>
   );
 };
